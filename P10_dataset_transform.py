@@ -1,6 +1,4 @@
 import torchvision
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
 from torch.utils.tensorboard import SummaryWriter
 dataset_transform = torchvision.transforms.Compose([
     torchvision.transforms.ToTensor()
@@ -19,7 +17,7 @@ test_set = torchvision.datasets.CIFAR10(root="./dataset", train=False, transform
 #
 # print(test_set[0])
 
-writer = SummaryWriter("p10")
+writer = SummaryWriter("logs/p10")
 for i in range(10):
     img, target = test_set[i]
     writer.add_image("test_set", img, i)
